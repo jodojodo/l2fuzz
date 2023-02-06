@@ -2,29 +2,43 @@
 
 A stateful fuzzer to detect vulnerabilities in Bluetooth BR/EDR Logical Link Control and Adaptation Protocol (L2CAP) layer.
 
-
 ## Prerequisites
 
-L2Fuzz uses python3.6.9 and scapy 2.4.4. Also, it uses Bluetooth Dongle.
+Ensure pyenv is installed. Then install python version 3.6.9:
 
+```bash
+pyenv install 3.6.9
 ```
+
+Enter the folder and allow the direnv:
+
+```bash
+direnv allow
+```
+
+L2Fuzz uses scapy 2.4.4. Also, it uses Bluetooth Dongle.
+
+```bash
 sudo apt-get install python3-pip
-pip3 install scapy==2.4.4
 sudo apt-get install libbluetooth-dev
-sudo pip3 install pybluez
-pip3 install python-statemachine
-pip3 install ouilookup
+pip install scapy==2.4.4
+pip install pybluez
+pip install python-statemachine
+pip install ouilookup
 ```
 
 ## Running the tests
 
 1. move to L2Fuzz folder.
 2. run l2fuzz.py .
+
+```bash
+sudo env "PATH=$PATH VIRTUAL_ENV=$VIRTUAL_ENV" python l2fuzz.py
 ```
-sudo python3 l2fuzz.py
-```
+
 3. Choose target device.
-```
+
+```bash
 Reset Bluetooth...
 Performing classic bluetooth inquiry scan...
 
@@ -34,11 +48,12 @@ Performing classic bluetooth inquiry scan...
 	01.	11:22:33:44:55:66	  Smartphone    	Smartphone	      	Vendor B
 	Found 2 devices
 
-Choose Device : 
+Choose Device :
 ```
+
 4. Choose target service which is supported by L2CAP.
 
-```
+```bash
 Start scanning services...
 
 	List of profiles for the device
@@ -48,14 +63,15 @@ Start scanning services...
 	03. [0x0003]: Service D
 	04. [0x0004]: Service E
 	05. [0x0005]: Service F
-	
-Select a profile to fuzz : 
+
+Select a profile to fuzz :
 ```
+
 5. Fuzz testing start.
 
 ### End test
 
-```
+```bash
 Ctrl + C
 ```
 
