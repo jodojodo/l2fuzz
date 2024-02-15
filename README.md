@@ -4,10 +4,10 @@ A stateful fuzzer to detect vulnerabilities in Bluetooth BR/EDR Logical Link Con
 
 ## Prerequisites
 
-Ensure pyenv is installed. Then install python version 3.6.9:
+Ensure pyenv is installed. Then install python version 3.6.9, which needs a patch for pip to actually work. The patch is already part of this repository.
 
 ```bash
-pyenv install 3.6.9
+pyenv install --patch 3.6.9 < [repository]/pip.patch
 ```
 
 Enter the folder and allow the direnv:
@@ -16,15 +16,14 @@ Enter the folder and allow the direnv:
 direnv allow
 ```
 
-L2Fuzz uses scapy 2.4.4. Also, it uses Bluetooth Dongle.
+L2Fuzz uses scapy 2.4.4 and ouilookup 0.2.4. Also, it uses Bluetooth Dongle.
 
 ```bash
-sudo apt-get install python3-pip
 sudo apt-get install libbluetooth-dev
 pip install scapy==2.4.4
 pip install pybluez
 pip install python-statemachine
-pip install ouilookup
+pip install ouilookup==0.2.4
 ```
 
 ## Running the tests
